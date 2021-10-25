@@ -15,6 +15,7 @@ class CreateMessageService {
             }
         )
         const infoWS = {
+            id: saveMessage.id,
             message: saveMessage.message,
             user_id: saveMessage.user,
             created_at: saveMessage.created_at,

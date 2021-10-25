@@ -28,14 +28,13 @@ class AuthenticateUserService {
                     Accept: "application/json",
                 },
             }
-        )
-
+        );
 
         const response = await axios.get<IUserResponse>(
             "https://api.github.com/user",
             {
                 headers: {
-                    authorization: `Bearer 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`,
+                    authorization: `Bearer ${accessTokenResponse.access_token}`,
                 },
             }
         );
@@ -51,8 +50,6 @@ class AuthenticateUserService {
             }
         )
 
-        console.log(user);
-
         if (!user) {
             user = await prismaClient.user.create(
                 {
@@ -67,7 +64,6 @@ class AuthenticateUserService {
             const test = await prismaClient.user.count();
             console.log("Count of users: " + test);
         }
-        console.log(user);
 
         const token = sign(
             {

@@ -11,7 +11,7 @@ class AuthenticateUserController {
             const result = await service.execute(code);
             return response.json(result);
         } catch (error) {
-            return response.json('Entrei no error!');
+            return response.status(401).json('Entrei no error!');
         }
     }
 }
